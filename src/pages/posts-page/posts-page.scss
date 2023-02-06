@@ -1,0 +1,16 @@
+.posts-page {
+    text-align: center;
+    
+    .body {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        flex-wrap: wrap;
+        padding: 40px;
+        text-align: center;
+
+        .card {
+            margin: 10px;
+        }
+    }
+}

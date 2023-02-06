@@ -16,9 +16,12 @@ export default function PostsPage() {
         const data = await getPosts.call("https://my-json-server.typicode.com/savayer/demo/posts");
         const normalizedData = postsDataNormalize(data);
 
-        if(normalizedData.length) {
+        if (normalizedData.length) {
           setPosts(normalizedData);
+        } else {
+          setPosts(null);
         }
+
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -40,14 +43,15 @@ export default function PostsPage() {
     return <div>Loading...</div>;
   }
 
-  if (!loading && posts.length === 0) {
+  if (!loading && posts === null) {
     return <div>You have not Posts yet</div>;
   }
 
   return (
-    <div>
-      {posts.map(function (post) {
-        return (
+    <div className="posts-page">
+      <h1>Posts</h1>
+      <div className="body">
+        {posts.map((post) => (
           <Card
             key={post.id}
             title={post.title.en}
@@ -58,8 +62,8 @@ export default function PostsPage() {
             target={post.target}
             onClick={analyticsTrackClick}
           />
-        );
-      })}
+        ))}
+      </div>
     </div>
   );
 }
