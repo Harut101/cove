@@ -40,11 +40,21 @@ export default function PostsPage() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="posts-page">
+        <h1>Posts</h1>
+        <p> Loading...</p>
+      </div>
+    );
   }
 
   if (!loading && posts === null) {
-    return <div>You have not Posts yet</div>;
+    return (
+      <div className="posts-page">
+        <h1>Posts</h1>
+        <p>You have not Posts yet</p>
+      </div>
+    );
   }
 
   return (
